@@ -6,8 +6,10 @@ import React, {
 } from "react"
 import PropTypes from "prop-types"
 import * as d3Geo from "d3-geo"
+import * as d3Projection from "d3-geo-projection"
 
 const { geoPath, ...projections } = d3Geo
+const { ...projections2 } = d3Projection
 
 const MapContext = createContext()
 
@@ -21,8 +23,8 @@ const makeProjection = ({
 
   if (isFunc) return projection
 
-  let proj = projections[projection]()
-    .translate([width / 2, height / 2])
+  let projector = projections[projection] || projections2[projection]
+  let proj = projector().translate([width / 2, height / 2])
 
   const supported = [
     proj.center ? "center" : null,
