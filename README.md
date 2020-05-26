@@ -12,7 +12,8 @@ This fork contains an additional component.
 `ZoomableGeo` is the result of porting this  [example](https://observablehq.com/@d3/zoom-to-bounding-box) to `react-simple-maps`.  Given a GeoJSON feature, it will zoom to fill the screen with the bounding box of that feature.
 
 ##### Props
-* `bounds` GeoJSON feature object or null, for entire geography
+* `boundsFrom` GeoJSON feature object to start with or null, for entire geography
+* `boundsTo` GeoJSON feature object or null, for entire geography
 * `boundsMargin` How much margin around feature bounds (0.05 is 5%)
 * `duration` How long to animate between features
 * `minZoom` Minimum zoom level
@@ -24,7 +25,7 @@ This fork contains an additional component.
 #### Example
 ```jsx
 <ZoomableGeo 
-  bounds={geo}
+  boundsTo={geo}
   boundsMargin={0.01} 
   duration={500} 
   maxZoom={20}>
