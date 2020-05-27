@@ -84,10 +84,8 @@ export default function useZoomGeo({
     .on("wheel.zoom", null)
 
     if (boundsStart) {
-      // HACKTOWN: This is only way I could figure out how to initialze 
-      // the transform with d3-geo
       const zoomFrom = calcTransform(boundsStart)
-      svg.property("__zoom", zoomFrom)
+      svg.call(zoom.transform, zoomFrom)
       setPosition({ x: zoomFrom.x, y: zoomFrom.y, k: zoomFrom.k })
 
       boundsStart = null
